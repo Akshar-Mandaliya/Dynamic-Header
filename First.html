@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Header</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: white;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: rgba(0, 0, 0, 0.8);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header-container .logo {
+      font-size: 2rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #ffcc00;
+      cursor: pointer;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 1rem;
+      color: white;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #ffcc00;
+    }
+
+    .section {
+      padding: 100px 20px;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: 2rem;
+    }
+
+    #home {
+      background: #1e3c72;
+    }
+
+    #about {
+      background: #2a5298;
+    }
+
+    #contact {
+      background: #1e3c72;
+    }
+
+    #login {
+      background: #2a5298;
+    }
+
+    #register {
+      background: #1e3c72;
+    }
+
+    .header {
+      font-size: 3rem;
+      text-align: center;
+      font-weight: bold;
+      color: #ffffff;
+      text-transform: uppercase;
+      display: inline-block;
+      transform: rotateX(0deg) rotateY(0deg);
+      transition: transform 0.5s ease, color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .header:hover {
+      transform: rotateX(15deg) rotateY(15deg) scale(1.1);
+      color: #ffcc00;
+    }
+
+    .blinking {
+      animation: blink 0.5s steps(2, start) infinite;
+    }
+
+    @keyframes blink {
+      to {
+        visibility: hidden;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header-container">
+    <div class="logo">My Website</div>
+    <div class="nav-links">
+      <a href="#home" style="font-size: 20px;">Home</a>
+      <a href="#about" style="font-size: 20px;">About</a>
+      <a href="#contact" style="font-size: 20px;">Contact</a>
+      <a href="#login" style="font-size: 20px;">Login</a>
+      <a href="#register" style="font-size: 20px;">Register</a>
+     
+    </div>
+  </div>
+
+  <div id="home" class="section">Welcome to the Home Section</div>
+  <div id="about" class="section">Learn More About Us in the About Section</div>
+  <div id="contact" class="section">Get in Touch with Us in the Contact Section</div>
+  <div id="login" class="section">Access Your Account in the Login Section</div>
+  <div id="register" class="section">Join Us in the Register Section</div>
+  
+
+  <script>
+    const header = document.getElementById('dynamic-header');
+
+    header.addEventListener('click', () => {
+      // Toggle blinking effect
+      if (header.classList.contains('blinking')) {
+        header.classList.remove('blinking');
+      } else {
+        header.classList.add('blinking');
+      }
+    });
+
+    // Adding dynamic hover effect with random rotations
+    header.addEventListener('mouseover', () => {
+      const randomX = Math.floor(Math.random() * 30) - 15; // Rotate between -15 to 15 degrees
+      const randomY = Math.floor(Math.random() * 30) - 15;
+      header.style.transform = `rotateX(${randomX}deg) rotateY(${randomY}deg)`;
+    });
+
+    header.addEventListener('mouseleave', () => {
+      header.style.transform = 'rotateX(0deg) rotateY(0deg)';
+    });
+  </script>
+</body>
+</html>
